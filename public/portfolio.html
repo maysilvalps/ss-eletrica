@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios de Campo — SS Ar Condicionado e Elétrica</title>
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        /* Organização da Lista de Relatórios */
+        .lista-relatorios { 
+            max-width: 1240px; 
+            margin: 0 auto; 
+            padding: 70px 24px 30px; 
+        }
+
+        .relatorio {
+            background: #ffffff;
+            border: 1px solid var(--cinza-borda);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform var(--transicao), box-shadow var(--transicao), border-color var(--transicao);
+        }
+
+        .relatorio:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 16px 32px rgba(10, 25, 47, 0.08); 
+            border-color: var(--azul-primario);
+        }
+
+        .relatorio-cabecalho {
+            background: var(--azul-escuro);
+            color: #60a5fa;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--fonte-display);
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        
+        .relatorio-cabecalho span:last-child {
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .relatorio-corpo { 
+            padding: 28px; 
+            display: flex; 
+            flex-direction: column; 
+            flex-grow: 1; 
+        }
+
+        .relatorio-corpo h2 { 
+            font-size: 1.35rem; 
+            color: var(--azul-escuro); 
+            margin-bottom: 12px; 
+        }
+
+        .relatorio-corpo p { 
+            color: var(--texto-suave); 
+            font-size: 0.95rem; 
+            margin-bottom: 20px; 
+            line-height: 1.6; 
+        }
+
+        .relatorio-galeria { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+            gap: 12px; 
+            margin: auto 0 20px 0; 
+        }
+        
+        .relatorio-galeria img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid var(--cinza-borda);
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .relatorio-galeria img:hover { 
+            transform: scale(1.03); 
+            filter: brightness(1.05); 
+        }
+
+        .btn-relatorio {
+            display: inline-block;
+            background: var(--azul-primario);
+            color: #fff;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            font-family: var(--fonte-texto);
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: background var(--transicao), transform var(--transicao);
+        }
+
+        .btn-relatorio:hover { 
+            background: #004fb3; 
+            transform: translateY(-2px); 
+        }
+
+        /* Modal de Imagem */
+        .image-modal {
+            border: none; 
+            padding: 0; 
+            max-width: 90vw; 
+            max-height: 90vh;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
+            background: transparent; 
+            border-radius: 8px;
+        }
+
+        .image-modal::backdrop { 
+            background: rgba(10, 25, 47, 0.85); 
+            backdrop-filter: blur(5px); 
+        }
+
+        .modal-content { 
+            position: relative; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+
+        .modal-content img { 
+            max-width: 100%; 
+            max-height: 85vh; 
+            object-fit: contain; 
+            border-radius: 6px; 
+        }
+
+        .close-modal {
+            position: absolute; 
+            top: 12px; 
+            right: 12px; 
+            background: var(--azul-primario); 
+            color: #fff;
+            border: none; 
+            width: 36px; 
+            height: 36px; 
+            font-size: 1.2rem; 
+            cursor: pointer; 
+            font-weight: bold;
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            transition: background var(--transicao);
+        }
+
+        .close-modal:hover { 
+            background: #004fb3; 
+        }
+    </style>
+</head>
+<body>
+
+    <header class="cabecalho">
+        <div class="cabecalho-container">
+            <div class="marca-topo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="SS Ar Condicionado e Elétrica">
+                </a>
+            </div>
+            <button class="menu-toggle" aria-label="Abrir menu">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="nav-principal">
+                <a href="index.html#solucoes">Soluções</a>
+                <a href="portfolio.html" style="color: var(--azul-primario);">Portfólio</a>
+                <a href="index.html#simulador">Simulador</a>
+                <a href="index.html#chamado" class="btn-nav-cta">Abrir Chamado</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="secao" style="padding-bottom: 40px;">
+        <div class="secao-container">
+            <div class="cabecalho-secao">
+                <span class="hero-eyebrow">Relatórios de Campo</span>
+                <h2>Excelência técnica em cada execução</h2>
+                <p>Registros reais de instalações, manutenções e montagens elétricas de alta complexidade. Clique em qualquer imagem para ampliar os detalhes.</p>
+            </div>
+        </div>
+    </section>
+
+    <dialog id="portfolio-modal" class="image-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="fecharImagem()">&times;</button>
+            <img id="modal-img" src="" alt="Imagem Ampliada">
+        </div>
+    </dialog>
+
+    <!-- ÁREA DINÂMICA ONDE OS RELATÓRIOS SERÃO INJETADOS AUTOMATICAMENTE -->
+    <main class="lista-relatorios">
+        <div class="grade-relatorios" id="container-relatorios">
+            <!-- Preenchido via JavaScript -->
+        </div>
+    </main>
+
+    <footer class="rodape-prancha">
+        <div class="title-block">
+            <div class="title-block-topo">
+                <div class="tb-celula">
+                    <h5>Projeto</h5>
+                    <p style="font-family:var(--fonte-display); font-size:1.15rem; color:#f4f9fc; margin-bottom:6px;">SS Ar Condicionado e Elétrica</p>
+                    <p>Climatização e infraestrutura elétrica de alto padrão.</p>
+                </div>
+                <div class="tb-celula">
+                    <h5>Navegação</h5>
+                    <a href="index.html#solucoes">Soluções</a>
+                    <a href="portfolio.html">Relatórios de Campo</a>
+                    <a href="index.html#simulador">Simulador</a>
+                    <a href="index.html#chamado">Ordem de Serviço</a>
+                </div>
+                <div class="tb-celula">
+                    <h5>Contato</h5>
+                    <p>(66) 99670-1516</p>
+                    <p>engenharia@sseletrica.com.br</p>
+                    <p>Rondonópolis - MT</p>
+                </div>
+            </div>
+            <div class="title-block-base">
+                <div class="tb-dado">Escala<strong>Atend. Local</strong></div>
+                <div class="tb-dado">Norma<strong>NBR 5410</strong></div>
+                <div class="tb-dado">Revisão<strong>R.04 — 2026</strong></div>
+                <div class="tb-dado">Status<strong>Em Operação</strong></div>
+            </div>
+        </div>
+        <p class="copyright-prancha">&copy; 2026 SS Ar Condicionado e Elétrica. Todos os direitos reservados.</p>
+    </footer>
+
+    <a href="https://wa.me/5566996701516" class="whatsapp-flutuante" target="_blank" aria-label="Fale Conosco no WhatsApp">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+        Fale Conosco
+    </a>
+
+    <!-- ARQUIVO DE DADOS EXTERNO E SCRIPT DE MONTAGEM -->
+    <script src="dados-relatorios.js"></script>
+    <script>
+        const modal = document.getElementById('portfolio-modal');
+        const modalImg = document.getElementById('modal-img');
+
+        function ampliarImagem(elementoImg) {
+            modalImg.src = elementoImg.src;
+            modalImg.alt = elementoImg.alt;
+            modal.showModal();
+        }
+        function fecharImagem() { modal.close(); }
+        if (modal) {
+            modal.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
+        }
+
+        // Script que injeta os relatórios na página automaticamente
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById("container-relatorios");
+            if (!container || typeof listaRelatorios === 'undefined') return;
+
+            container.innerHTML = listaRelatorios.map(rel => `
+                <article class="relatorio">
+                    <div class="relatorio-cabecalho">
+                        <span>${rel.categoria}</span>
+                        <span>REL. ${rel.id}</span>
+                    </div>
+                    <div class="relatorio-corpo">
+                        <h2>${rel.titulo}</h2>
+                        <p>${rel.descricao}</p>
+                        <div class="relatorio-galeria">
+                            ${rel.imagens.map(img => `
+                                <img src="${img.src}" alt="${img.alt}" onclick="ampliarImagem(this)">
+                            `).join('')}
+                        </div>
+                        <a href="https://wa.me/5566996701516?text=${encodeURIComponent(rel.whatsappText)}" target="_blank" class="btn-relatorio">Solicitar Serviço Semelhante</a>
+                    </div>
+                </article>
+            `).join('');
+        });
+
+        function ampliarVideo(elementoVideo) {
+            const sourceEl = elementoVideo.querySelector('source');
+            if (!sourceEl) return;
+            
+            // Cria um elemento de vídeo grande para dentro do modal
+            const modalContent = document.querySelector('.modal-content');
+            let videoModal = document.getElementById('modal-video');
+            
+            // Esconde a imagem do modal se ela estiver lá
+            if(modalImg) modalImg.style.display = 'none';
+            
+            if (!videoModal) {
+                videoModal = document.createElement('video');
+                videoModal.id = 'modal-video';
+                videoModal.setAttribute('controls', 'true');
+                videoModal.setAttribute('autoplay', 'true');
+                videoModal.setAttribute('playsinline', 'true');
+                videoModal.style.maxWidth = '100%';
+                videoModal.style.maxHeight = '85vh';
+                videoModal.style.borderRadius = '6px';
+                modalContent.appendChild(videoModal);
+            }
+            
+            videoModal.style.display = 'block';
+            videoModal.src = sourceEl.src;
+            modal.showModal();
+        }
+    </script>
+    <script src="script.js"></script>
+
+</body>
+</html>
