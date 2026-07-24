@@ -1,7 +1,7 @@
 const listaRelatorios = [
     {
         id: "01",
-        categoria: "Engenharia Elétrica & Painéis",
+        categoria: "Elétrica & Painéis",
         titulo: "Montagem de Quadro de Distribuição Geral (QGD)",
         descricao: "Montagem completa de QGD seguindo rigorosamente as diretrizes da norma <strong>NBR 5410</strong>. Contém barramentos de cobre organizados, identificação minuciosa de circuitos e instalação de DPS e disjuntores de alta confiabilidade.",
         imagens: [

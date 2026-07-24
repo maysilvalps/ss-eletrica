@@ -167,6 +167,51 @@
         .close-modal:hover { 
             background: #004fb3; 
         }
+
+        /* --- MELHORIAS MOBILE — bloco novo, não altera o estilo desktop --- */
+        @media (max-width: 600px) {
+            .lista-relatorios {
+                padding: 20px 14px 20px;
+            }
+
+            .relatorio-cabecalho {
+                padding: 10px 16px;
+                font-size: 0.65rem;
+            }
+
+            .relatorio-corpo {
+                padding: 20px 18px;
+            }
+            .relatorio-corpo h2 {
+                font-size: 1.15rem;
+                margin-bottom: 8px;
+            }
+            .relatorio-corpo p {
+                font-size: 0.88rem;
+                margin-bottom: 16px;
+            }
+
+            .relatorio-galeria {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            .relatorio-galeria img,
+            .relatorio-galeria video {
+                height: 120px !important;
+            }
+
+            .btn-relatorio {
+                padding: 12px 16px;
+                font-size: 0.75rem;
+            }
+
+            .close-modal {
+                width: 44px;
+                height: 44px;
+                top: 8px;
+                right: 8px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -232,7 +277,6 @@
                 <div class="tb-celula">
                     <h5>Contato</h5>
                     <p>(66) 99670-1516</p>
-                    <p>engenharia@sseletrica.com.br</p>
                     <p>Rondonópolis - MT</p>
                 </div>
             </div>

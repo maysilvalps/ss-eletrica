@@ -73,7 +73,7 @@ img {
     background-color: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--cinza-borda);
-    position: fixed; /* Alterado de sticky para fixed */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -82,7 +82,7 @@ img {
 }
 
 .cabecalho.rolando {
-    background-color: rgba(255, 255, 255, 0.85); /* Fica um pouco mais transparente */
+    background-color: rgba(255, 255, 255, 0.85);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
@@ -427,8 +427,15 @@ img {
 /* --- GRADE DE VISORES (PORTFÓLIO NA HOME) --- */
 .grade-visores {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* Exibe exatamente 3 itens por linha no desktop */
     gap: 24px;
+}
+
+/* --- OPÇÃO 1: EXIBIR APENAS OS 3 PRIMEIROS ITENS NO DESKTOP --- */
+@media (min-width: 901px) {
+    .grade-visores .visor:nth-child(n+4) {
+        display: none;
+    }
 }
 
 .visor {
@@ -868,7 +875,7 @@ img {
     }
 
     .hero {
-        padding: 130px 16px 60px; /* Aumentado no topo para compensar o menu fixo */
+        padding: 130px 16px 60px;
     }
 
     .hero-circuito-container {
@@ -916,7 +923,7 @@ img {
 
     .grade-apps {
         grid-template-columns: 1fr !important;
-        padding: 0 4px; /* Respiro lateral para as caixas do simulador e chamado */
+        padding: 0 4px;
     }
 
     .painel-app {
@@ -930,7 +937,7 @@ img {
     .grade-relatorios {
         grid-template-columns: 1fr !important;
         gap: 24px !important;
-        padding-bottom: 90px;
+        padding-bottom: 20px;
     }
 
     .secao {
@@ -967,3 +974,298 @@ img {
     }
 }
 
+
+
+/* ==========================================================================
+   MELHORIAS MOBILE — bloco integrado
+   ========================================================================== */
+
+@media (max-width: 900px) {
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+    .hero            { order: 1; }
+    .secao-portfolio { order: 2; padding-top: 50px; padding-bottom: 46px; }
+    .faixa-dados     { order: 3; }
+    #solucoes        { order: 4; }
+    .faixa-ods       { order: 5; }
+    .secao-apps      { order: 6; }
+    .rodape-prancha  { order: 7; }
+
+    .grade-visores {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 16px;
+        padding: 4px 4px 14px;
+        margin: 0 -4px;
+    }
+    .grade-visores::-webkit-scrollbar { display: none; }
+    .grade-visores { scrollbar-width: none; }
+
+    .visor {
+        flex: 0 0 80%;
+        scroll-snap-align: center;
+    }
+
+    .secao-portfolio .cabecalho-secao {
+        margin-bottom: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        width: 44px;
+        height: 44px;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        padding: 0;
+    }
+    .menu-toggle span {
+        width: 24px;
+    }
+
+    .nav-principal a {
+        width: 100%;
+        padding: 12px 4px;
+    }
+    .nav-principal a.btn-nav-cta {
+        text-align: center;
+        margin-top: 6px;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .marca-topo img { max-height: 44px; }
+
+    .hero {
+        padding: 118px 16px 46px;
+    }
+    .hero-eyebrow { font-size: 0.72rem; }
+    .hero h1 {
+        font-size: 1.85rem;
+        line-height: 1.22;
+    }
+    .hero p { font-size: 0.92rem; }
+
+    .cabecalho-secao { margin-bottom: 32px; }
+    .cabecalho-secao h2 { font-size: 1.5rem; }
+    .cabecalho-secao p { font-size: 0.9rem; }
+
+    .visor { flex-basis: 86%; }
+    .visor-legenda .titulo-item { font-size: 0.88rem; }
+
+    .folha-dados { padding: 20px 18px; }
+    .folha-dados h3 { font-size: 1.05rem; }
+    .folha-dados p { font-size: 0.88rem; }
+
+    .faixa-ods h2 { font-size: 1.4rem; }
+    .faixa-ods p { font-size: 0.9rem; }
+    .faixa-ods-grade { gap: 26px; }
+
+    .faixa-dados-lista { justify-content: center; gap: 10px 18px; }
+    .faixa-dados-item { font-size: 0.76rem; }
+
+    .painel-corpo { padding: 22px 18px; }
+    .painel-corpo h3 { font-size: 1.15rem; }
+    .painel-corpo > p { font-size: 0.88rem; }
+
+    .tb-celula { padding: 22px 18px; }
+
+    .whatsapp-flutuante {
+        padding: 10px 14px;
+        font-size: 0.75rem;
+        bottom: 16px;
+        right: 12px;
+    }
+
+    .secao, section {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero, .hero-content, .banner-principal {
+        text-align: center !important;
+        align-items: center !important;
+    }
+}
+
+/* --- AJUSTES APENAS DE ESPAÇAMENTO NO MOBILE (SEM MEXER NA ANIMAÇÃO) --- */
+@media (max-width: 768px) {
+    /* Encurta o espaço superior e inferior do topo */
+    .hero {
+        padding-top: 28px !important;
+        padding-bottom: 25px !important;
+    }
+
+    /* Remove o vão vazio entre os textos e o bloco de animação */
+    .hero-grade {
+        gap: 0px !important;
+    }
+
+    /* Reduz o espaçamento interno das seções gerais no celular */
+    .secao {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Oculta totalmente o container da animação do banner no celular */
+    .hero-circuito-container {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 1. Mantém a caixa grande do banner oculta */
+    .hero-circuito-container {
+        display: none !important;
+    }
+
+    /* 2. Configura o cabeçalho para receber as trilhas lineares suaves */
+    .cabecalho {
+        position: fixed !important;
+        overflow: visible; /* "hidden" cortava o menu dropdown (nav-principal), que fica fora da caixa do cabeçalho */
+    }
+
+    /* Desenha apenas linhas finas e suaves em movimento, sem nenhuma bolinha */
+    .cabecalho::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: 
+            linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.25) 50%, transparent);
+        background-size: 200px 100%;
+        background-repeat: repeat-x;
+        opacity: 0.6;
+        animation: trilhaSuaveMovendo 6s linear infinite;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* Garante que a logo e o menu fiquem acima das linhas */
+    .cabecalho-container {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+@keyframes trilhaSuaveMovendo {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 400px 0;
+    }
+}
+
+/* ==========================================================================
+   CORREÇÕES EXCLUSIVAS PARA MOBILE (SOLICITADAS)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. Menu Hambúrguer corrigido e garantido */
+    .nav-principal {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        z-index: 2000;
+    }
+    .nav-principal.active {
+        display: flex !important;
+    }
+
+    /* 2. Bloco Azul / ODS (Primeiro print): Remove o texto lateral e centraliza */
+    .faixa-ods-grade {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        gap: 20px !important;
+    }
+    .faixa-ods-grade div:last-child {
+        display: none !important; /* Remove o texto longo solicitado */
+    }
+    .faixa-ods {
+        padding: 40px 16px !important; /* Encurta o fundo azul */
+    }
+    .faixa-ods .link-tecnico {
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    /* 3. Botão "Ver Portfolio" (Segundo print): Cor azul e menos espaço */
+    .secao-portfolio {
+        padding-top: 30px !important;
+        padding-bottom: 20px !important;
+    }
+    .secao-portfolio .btn-secundario {
+        background: var(--azul-primario) !important;
+        color: #fff !important;
+        border: none !important;
+        display: inline-block;
+        padding: 12px 24px;
+    }
+
+    /* 4. Página de Portfólio e Espaços Excessivos (3º e 4º prints) */
+    .secao, section {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+    /* Evita invasão do título na barra no mobile */
+    body {
+        padding-top: 60px;
+    }
+    .cabecalho {
+        height: auto;
+    }
+
+    /* 5. Rodapé mais limpo e centralizado no mobile (5º e 6º prints) */
+    .rodape-prancha {
+        padding: 30px 16px 10px !important;
+    }
+    .title-block-topo {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+    }
+    .tb-celula {
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+        padding: 16px !important;
+    }
+    .title-block-base {
+        grid-template-columns: 1fr 1fr !important;
+        text-align: center;
+    }
+    .tb-dado {
+        border-right: 1px solid rgba(255,255,255,0.1) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+        padding: 10px !important;
+    }
+
+    /* 6. WhatsApp Flutuante Arrastável, Menor e Transparente */
+    .whatsapp-flutuante {
+        padding: 8px 12px !important;
+        font-size: 0.75rem !important;
+        background: rgba(37, 211, 102, 0.85) !important; /* Leve transparência */
+        backdrop-filter: blur(4px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        cursor: grab;
+        touch-action: none; /* Facilita o arraste no toque do celular */
+    }
+}
