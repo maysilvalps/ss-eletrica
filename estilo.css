@@ -1100,7 +1100,7 @@ img {
     }
 }
 
-/* --- AJUSTES APENAS DE ESPAÇAMENTO NO MOBILE (SEM MEXER NA ANIMAÇÃO) --- */
+/* --- AJUSTES APENAS DE ESPAÇAMENTO NO MOBILE--- */
 @media (max-width: 768px) {
     /* Encurta o espaço superior e inferior do topo */
     .hero {
@@ -1139,7 +1139,7 @@ img {
         overflow: visible; /* "hidden" cortava o menu dropdown (nav-principal), que fica fora da caixa do cabeçalho */
     }
 
-    /* Desenha apenas linhas finas e suaves em movimento, sem nenhuma bolinha */
+    /* Desenha apenas linhas finas e suaves em movimento */
     .cabecalho::before {
         content: '';
         position: absolute;
@@ -1171,7 +1171,7 @@ img {
 }
 
 /* ==========================================================================
-   CORREÇÕES EXCLUSIVAS PARA MOBILE (SOLICITADAS)
+   CORREÇÕES EXCLUSIVAS PARA MOBILE
    ========================================================================== */
 @media (max-width: 768px) {
     /* 1. Menu Hambúrguer corrigido e garantido */
@@ -1192,7 +1192,7 @@ img {
         display: flex !important;
     }
 
-    /* 2. Bloco Azul / ODS (Primeiro print): Remove o texto lateral e centraliza */
+    /* 2. Bloco Azul / Remove o texto lateral e centraliza */
     .faixa-ods-grade {
         grid-template-columns: 1fr !important;
         text-align: center;
@@ -1202,27 +1202,27 @@ img {
         display: none !important; /* Remove o texto longo solicitado */
     }
     .faixa-ods {
-        padding: 40px 16px !important; /* Encurta o fundo azul */
+        padding: 20px 10px !important; /* Encurta o fundo azul */
     }
     .faixa-ods .link-tecnico {
         display: inline-block;
         margin-top: 10px;
     }
 
-    /* 3. Botão "Ver Portfolio" (Segundo print): Cor azul e menos espaço */
+    /* 3. Botão "Ver Portfolio": Cor azul e menos espaço */
     .secao-portfolio {
         padding-top: 30px !important;
         padding-bottom: 20px !important;
     }
     .secao-portfolio .btn-secundario {
         background: var(--azul-primario) !important;
-        color: #fff !important;
+        color: #ffffff !important;
         border: none !important;
         display: inline-block;
         padding: 12px 24px;
     }
 
-    /* 4. Página de Portfólio e Espaços Excessivos (3º e 4º prints) */
+    /* 4. Página de Portfólio e Espaços Excessivos */
     .secao, section {
         padding-top: 30px !important;
         padding-bottom: 30px !important;
@@ -1235,7 +1235,7 @@ img {
         height: auto;
     }
 
-    /* 5. Rodapé mais limpo e centralizado no mobile (5º e 6º prints) */
+    /* 5. Rodapé mais limpo e centralizado no mobile */
     .rodape-prancha {
         padding: 30px 16px 10px !important;
     }
