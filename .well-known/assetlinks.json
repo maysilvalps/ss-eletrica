@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.maysilvalps.twa",
+        "sha256_cert_fingerprints": ["C8:8B:6E:FB:53:9D:86:71:30:0A:1C:AB:D3:9F:E7:A7:10:4E:18:85:C0:BC:8F:72:8F:4C:5F:E2:40:8F:91:D1"]
+      }
+    }]
